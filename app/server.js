@@ -10,21 +10,19 @@ var options = {
 }
 var spotify = require('node-spotify')(options);
 
-var ready = function(err) {
-    if(err) {
-        console.log('Login failed', err);
-    } else {
-        console.log('node-spotify is ready to exeute more code!');
-        //your apps functionality should start here
-				function printPlaylist(playlist) {
-			    console.log(playlist.name + ' is now loaded.');
-			  }
-			  var playlists = spotify.playlistContainer.getPlaylists();
-			  spotify.waitForLoaded(playlists, printPlaylist);
-}
+spotify.ready(function() {
+  console.log('Starting tests');
+  function printTrack(track) {
+    console.log(track);
+  }
+  function waitForTrack(playlist) {
+    var track = playlist.getTracks(0);
+    console.log('Track is loaded: ' + track.isLoaded);
+    spotify.waitForLoaded([track], printTrack);
+  }
+  var playlist = spotify.playlistContainer.getPlaylist(14);
+  spotify.waitForLoaded([playlist], waitForTrack);
 
-spotify.on({
-    ready: ready
-})
+});
 
 spotify.login(username, pass, false, false);
