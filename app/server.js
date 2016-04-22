@@ -2,7 +2,6 @@ console.log("starting node.js script...")
 
 var username = process.env.SPOT_USER
 var pass = process.env.SPOT_PASS
-var trackIndex = parseInt(process.env.TRACK_INDEX) || 0
 
 var options = {
     appkeyFile: '/data/spotify_appkey.key',
@@ -17,9 +16,11 @@ var ready = function(err) {
     } else {
         console.log('node-spotify is ready to exeute more code!');
         //your apps functionality should start here
-        var track = spotify.sessionUser.starredPlaylist.getTrack(0);
-        spotify.player.play(track);
-    }
+				function printPlaylist(playlist) {
+			    console.log(playlist.name + ' is now loaded.');
+			  }
+			  var playlists = spotify.playlistContainer.getPlaylists();
+			  spotify.waitForLoaded(playlists, printPlaylist);
 }
 
 spotify.on({
