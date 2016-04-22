@@ -1,5 +1,5 @@
 # Use base image for device arch with node installed
-FROM resin/raspberrypi-node
+FROM resin/raspberrypi-node:0.10.43
 
 #RUN apt-get update && apt-get install
 
