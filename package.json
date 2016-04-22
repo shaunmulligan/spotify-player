@@ -1,0 +1,18 @@
+{
+  "name": "resin-spotify-player",
+  "description": "Stream spotify from a RPI",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "preinstall": ""
+  },
+  "version": "0.0.1",
+  "dependencies": {
+		"node-spotify": "0.7.1"
+  },
+  "engines": {
+    "node": "0.10.22"
+  }
+}
