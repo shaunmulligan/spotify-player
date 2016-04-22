@@ -21,10 +21,11 @@ var ready = function(err) {
 			  }
 			  var playlists = spotify.playlistContainer.getPlaylists();
 			  spotify.waitForLoaded(playlists, printPlaylist);
+		}
 }
 
 spotify.login(username, pass, false, false);
 
 spotify.on({
     ready: ready
-})
+});
