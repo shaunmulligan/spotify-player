@@ -1,7 +1,9 @@
 # Use base image for device arch with node installed
 FROM resin/raspberrypi-node:0.10.43
 
-#RUN apt-get update && apt-get install
+RUN wget -q -O - https://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
+RUN sudo wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/jessie.list
+RUN apt-get update && apt-get install libasound2-dev libspotify-dev
 
 # create src dir
 RUN mkdir -p /usr/src/app/
