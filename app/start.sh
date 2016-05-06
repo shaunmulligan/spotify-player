@@ -8,4 +8,5 @@ else
     echo "Spotify Key already exists"
 fi
 
-node ./server.js
+# node ./app/server.js
+node ./app/runsong.js
