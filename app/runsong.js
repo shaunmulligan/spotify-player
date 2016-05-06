@@ -9,7 +9,7 @@ spotify.login(username, pass)
   .then(function () {
     //logged in
 		var track = {
-		  uri: 'spotify:track:7gss5MqLM5sHlHOl2EAbrp'
+		  uri: 'spotify:track:4S7YHmlWwfwArgd8LfSPud'
 		};
 		spotify.player.on('play', function (track) {
 			/* play event */
@@ -21,10 +21,18 @@ spotify.login(username, pass)
 		});
 		spotify.player.on('progress', function (progress) {
 			/* progress event */
-			console.log('current track progress: ' + progress);
+			console.log('current track progress: ' + progress.elapsed);
 		});
-		spotify.player.play(track);
-  })
+		//spotify.player.play(track);
+		spotify.search('resin-running')
+		  .then(function (result) {
+		    //matching artists, albums, tracks and playlists
+				console.log(result)
+		  })
+		  .catch(function (err) {
+		    //search error
+		  });
+	})
   .catch(function (err) {
     //wrong username and/or password
 		console.log('wrong username or password')
