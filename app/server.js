@@ -17,6 +17,7 @@ var ready = function(err) {
         console.log('node-spotify is ready to exeute more code!');
         //your apps functionality should start here
 				function printPlaylist(playlist) {
+					console.log('running playlist is at index: ' + playlist.indexOf("running"));
 			    console.log(playlist.name + ' is now loaded.');
 			  }
 			  var playlists = spotify.playlistContainer.getPlaylists();

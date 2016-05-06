@@ -18,7 +18,7 @@ COPY package.json ./
 RUN JOBS=MAX npm install --unsafe-perm --production && npm cache clean
 
 # Copy all of files here for caching purposes
-COPY /app ./
+COPY . ./
 
 # npm start will run server.js by default
-CMD ["./start.sh"]
+CMD ["./add/start.sh"]
